@@ -10,6 +10,7 @@ interface IHomeState {
   sprites?: ISprites
   loading: boolean
   loadingPokemonInfo: boolean
+  name?: string
 }
 
 const initialState: IHomeState = {
@@ -49,14 +50,19 @@ const homeSlice = createSlice({
     builder
       .addCase(apiPokeByName.pending, (state) => {
         state.loadingPokemonInfo = true
+        state.sprites = undefined
+        state.stats = []
       })
       .addCase(apiPokeByName.fulfilled, (state, action) => {
+        state.loadingPokemonInfo = false
         state.sprites = action.payload!.sprites
         state.stats = action.payload!.stats
-        state.loadingPokemonInfo = false
+        state.name = action.payload!.name
       })
       .addCase(apiPokeByName.rejected, (state) => {
         state.loadingPokemonInfo = false
+        state.sprites = undefined
+        state.stats = []
       })
   },
 })

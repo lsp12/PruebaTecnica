@@ -24,7 +24,7 @@ export const PokemonsCard = ({ pokemon, id }: IPokemonsCardProps) => {
 
   return (
     <Card
-      sx={{ boxShadow: 2 }}
+      sx={{ boxShadow: 2, borderRadius: '0' }}
       onClick={() => {
         dispatch(apiPokeByName(name))
       }}
