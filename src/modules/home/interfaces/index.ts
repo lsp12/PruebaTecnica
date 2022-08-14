@@ -23,6 +23,7 @@ export interface ISprites {
 export interface IPokemonInfo {
   sprites: ISprites
   stats: IStats[]
+  name: string
 }
 
 export interface IResults {
